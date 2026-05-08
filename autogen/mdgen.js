@@ -120,10 +120,6 @@ for (const yamlFile of yamlFiles) {
         appendLine(`{{ inherited_by([${children.map(n => `"${n}"`).join(", ")}]) }}`)
     }
 
-    appendLine("")
-    appendLine(c.Description)
-    appendLine("")
-
     if (c.IsStatic) {
         appendLine("")
         appendLine(`{{ staticclass(${c.StaticAlias ? `"${c.StaticAlias}"` : ""}) }}`)
@@ -135,6 +131,10 @@ for (const yamlFile of yamlFiles) {
         appendLine("{{ notnewable() }}")
         appendLine("")
     }
+
+    appendLine("")
+    appendLine(c.Description)
+    appendLine("")
 
     const properties = c.Properties ? (Array.isArray(c.Properties) ? c.Properties : [c.Properties]) : [];
 
