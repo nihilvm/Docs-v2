@@ -128,14 +128,10 @@ for (const yamlFile of yamlFiles) {
         appendLine("")
         appendLine(`{{ staticclass(${c.StaticAlias ? `"${c.StaticAlias}"` : ""}) }}`)
         appendLine("")
-    }
-
-    if (c.IsAbstract) {
+    } else if (c.IsAbstract) {
         appendLine("{{ abstract() }}")
         appendLine("")
-    }
-
-    if (!c.IsInstantiable) {
+    } else if (!c.IsInstantiable) {
         appendLine("{{ notnewable() }}")
         appendLine("")
     }
